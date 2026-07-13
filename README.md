@@ -8,6 +8,10 @@
 
 **Group members and student numbers:**  
 
+Anjor Misser - ST10452806
+Kiara Naidoo - ST10252256
+Sayali Sookdeo - ST10458649
+
 **Working app name:**  
 
 **Problem to be solved:**  
