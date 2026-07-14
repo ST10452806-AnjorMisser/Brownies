@@ -50,7 +50,8 @@ FleetPulse is a single Android app with role-based views. A dispatcher creates a
 
 ## 3. Custom REST API
 
-Explain what the API stores or processes and why it is central to the app.\
+Explain what the API stores or processes and why it is central to the app.
+
 The API stores and manages depots, vehicles, drivers, clients, delivery jobs and stops, proof-of-delivery records, and offline sync logs. It is the single source of truth that reconciles actions captured offline by drivers with the real-time views seen by dispatchers and clients, and it enforces the app's core business logic.
 
 **API responsibilities and business logic:**  
@@ -64,13 +65,13 @@ The API stores and manages depots, vehicles, drivers, clients, delivery jobs and
 
 List at least five proposed endpoints:
 
-| # | Method and route | Purpose |
-|---:|---|---|
-| 1 |  |  |
-| 2 |  |  |
-| 3 |  |  |
-| 4 |  |  |
-| 5 |  |  |
+|**#**|**Method and route**|**Purpose**|
+|---|---|---|
+|1|POST /api/auth/login|Authentcate a user (driver, dispatcher or client) via SSO and<br>return a JWT and refresh token.|
+|2|GET /api/drivers/{id}/jobs|Retrieve the delivery jobs and stop sequence currently<br>assigned to a driver.|
+|3|POST<br>/api/jobs/{jobId}/stops/{stopId}/pod|Submit proof of delivery (photo, signature, GPS coordinates,<br>tmestamp) for a completed stop, including ofine-queued<br>submissions.|
+|4|POST /api/jobs|Create a new delivery job with multple stops and trigger<br>route-optmisaton logic.|
+|5|GET /api/depots/{id}/feet-status|Return live vehicle positons and job statuses for all drivers at<br>a depot, for the dispatcher map view.|
 
 ## 4. POE feature fit
 
