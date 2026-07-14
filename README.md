@@ -107,9 +107,9 @@ This is not the formal research report. Three suitable apps have been identified
 
 |**App**|**Google Play Store link**|**Why it is comparable**|
 |---|---|---|
-|1. Route4Me Route<br>Planner|htps://play.google.com/store/apps/<br>details?<br>id=com.route4me.routeoptmizer|A widely-used mult-stop route<br>optmisaton and navigaton app for<br>professional drivers and couriers;<br>comparable to FleetPulse's route-<br>optmisaton and driver-navigaton feature<br>but built for individual/enterprise route<br>planning rather than integrated<br>dispatcher-driver-client coordinaton.|
+|1. Route4Me Route<br>Planner|https://play.google.com/store/apps/<br>details?<br>id=com.route4me.routeoptmizer|A widely-used mult-stop route<br>optmisaton and navigaton app for<br>professional drivers and couriers;<br>comparable to FleetPulse's route-<br>optmisaton and driver-navigaton feature<br>but built for individual/enterprise route<br>planning rather than integrated<br>dispatcher-driver-client coordinaton.|
 |2. Onfleet Driver|https://play.google.com/store/apps/<br>details?id=com.onfleet.driver.app|A last-mile delivery driver companion app<br>with live navigaton, proof-of-delivery<br>capture and dispatcher/customer<br>communicaton; closely comparable in<br>scope, though it is a driver-only client<br>paired with a separate web dispatch<br>platorm rather than one combined mobile<br>app.|
-|3. Track-POD Delivery<br>Driver App|htps://play.google.com/store/apps/<br>details?id=com.pt.ms|An electronic proof-of-delivery app that<br>works ofine and syncs on reconnecton,<br>with route lists, signature/photo capture<br>and vehicle checks; comparable to<br>FleetPulse's ofine sync and POD features,<br>aimed at general logistcs and courier<br>operators.|
+|3. Track-POD Delivery<br>Driver App|https://play.google.com/store/apps/<br>details?id=com.pt.ms|An electronic proof-of-delivery app that<br>works ofine and syncs on reconnecton,<br>with route lists, signature/photo capture<br>and vehicle checks; comparable to<br>FleetPulse's ofine sync and POD features,<br>aimed at general logistcs and courier<br>operators.|
 
 
 ## 7. Feasibility and approval
