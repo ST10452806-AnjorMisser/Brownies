@@ -84,7 +84,7 @@ List at least five proposed endpoints:
 |Setngs — identfy at least three|(1) Language selecton (English / isiZulu); (2) notfcaton preferences, e.g.<br>SLA-breach alert thresholds; (3) ofine sync frequency / data-saver mode<br>for low-connectvity areas; (4) preferred map/navigaton provider (Google<br>Maps or Waze).|
 |Biometric authentcaton|Fingerprint or face unlock (Android BiometricPrompt) is required to open<br>the driver app each shif and to confrm submission of proof of delivery,<br>preventng a driver's device from being used by someone else and<br>reducing delivery fraud.|
 |Ofine acton and synchronisaton|The driver app uses a local Room database to queue stop completons,<br>POD photos/signatures and GPS breadcrumbs when there is no signal,<br>typical of rural depots or basement loading bays. Queued actons are<br>uploaded through the batch sync endpoint and reconciled by server-side<br>confict-resoluton logic once connectvity returns.|
-|Real-tme notfcaton|Firebase Cloud Messaging pushes: new job assignments to drivers, SLA-<br>breach and excepton alerts to dispatchers, and 'out for delivery' /<br>'delivered' updates to clients.|
+|Real-tme notfcaton|Firebase Cloud Messaging pushes: new job assignments to drivers, SLA-<br>breach and excepton alerts to dispatchers, and 'out for delivery'/<br>'delivered' updates to clients.|
 |Two South African languages|The interface is localised in English and isiZulu, covering navigaton menus,<br>job instructons and notfcaton text, selectable in Setngs or defaultng to<br>the device language.|
 
 
@@ -103,25 +103,44 @@ List at least five proposed endpoints:
 
 ## 6. Comparable Android apps
 
-This is not the formal research report. Identify three suitable apps that could later be compared with your concept.
+This is not the formal research report. Three suitable apps have been identified that could later be compared with the FleetPulse concept. 
 
-| App | Google Play Store link | Why it is comparable |
+|**App**|**Google Play Store link**|**Why it is comparable**|
 |---|---|---|
-| 1. |  |  |
-| 2. |  |  |
-| 3. |  |  |
+|1. Route4Me Route<br>Planner|htps://play.google.com/store/apps/<br>details?<br>id=com.route4me.routeoptmizer|A widely-used mult-stop route<br>optmisaton and navigaton app for<br>professional drivers and couriers;<br>comparable to FleetPulse's route-<br>optmisaton and driver-navigaton feature<br>but built for individual/enterprise route<br>planning rather than integrated<br>dispatcher-driver-client coordinaton.|
+|2. Onfleet Driver|htps://play.google.com/store/apps/<br>details?id=com.onfleet.driver.app|A last-mile delivery driver companion app<br>with live navigaton, proof-of-delivery<br>capture and dispatcher/customer<br>communicaton; closely comparable in<br>scope, though it is a driver-only client<br>paired with a separate web dispatch<br>platorm rather than one combined mobile<br>app.|
+|3. Track-POD Delivery<br>Driver App|htps://play.google.com/store/apps/<br>details?id=com.pt.ms|An electronic proof-of-delivery app that<br>works ofine and syncs on reconnecton,<br>with route lists, signature/photo capture<br>and vehicle checks; comparable to<br>FleetPulse's ofine sync and POD features,<br>aimed at general logistcs and courier<br>operators.|
+
 
 ## 7. Feasibility and approval
 
 **Proposed technology:** Android stack, API technology, database, hosting, authentication and key SDKs.  
 
+- Android stack: Kotlin, Jetpack Compose, Room (offline storage), WorkManager (background sync), BiometricPrompt, Google Maps SDK, Firebase Cloud Messaging. 
+
+- API technology: ASP.NET Core Web API (C#) using the Repository Pattern and Dependency Injection, following the same architecture applied in the team's GLMS POE work. 
+
+- Database: SQL Server (relational data — jobs, stops, users, PODs) via Entity Framework Core. 
+
+- Hosting: Azure App Service for the API and Azure Blob Storage for POD photos/signatures; Azure SQL Database for the data tier. 
+
+- Authentication: OAuth2/OpenID Connect SSO (Google/Microsoft Azure AD) plus JWT bearer tokens for API access; biometric unlock on-device. 
+
+- Key SDKs: Firebase (push notifications, crash reporting), Google Maps/Directions API (navigation and route optimisation), Azure Blob Storage SDK (media upload). 
+
+
 **Three main risks and how they will be reduced:**  
 
-1.  
-2.  
-3.  
+1. Data conflicts from offline sync (two updates to the same stop) could corrupt job status. Mitigated by designing clear server-side conflict-resolution rules (last-confirmed-state wins, with an audit log) and testing sync scenarios early. 
+
+2. Route-optimisation logic is complex and could delay delivery. Mitigated by starting with a simple nearest-neighbour or third-party Directions API optimisation call for the MVP, and only building a custom algorithm if time allows. 
+
+3. Limited real-world testing devices/connectivity conditions could hide offline-sync bugs. Mitigated by using Android emulator network-throttling and airplane-mode testing throughout development, not just at the end. 
 
 **Scope check:** What will be removed first if the project becomes too large?  
+
+The client self-service tracking view and the depot performance dashboard (features 4 and 5) would be removed or reduced to a minimal read-only screen first, since the core dispatcher–driver job/POD/offline-sync loop must remain intact to satisfy the POE's mandatory requirements. Routeoptimisation would be simplified to a basic optimisation API call rather than a custom algorithm if needed. 
+
 
 ### Lecturer decision
 
