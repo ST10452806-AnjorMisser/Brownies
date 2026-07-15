@@ -10,7 +10,8 @@
 
 Anjor Misser - ST10452806\
 Kiara Naidoo - ST10252256\
-Sayali Sookdeo - ST10458649
+Sayali Sookdeo - ST10458649\
+Iqra Nazir - ST10448362
 
 
 **Working app name:**  
