@@ -23,8 +23,8 @@ Small and medium logistics and courier operators in South Africa largely coordin
 
 **Target users:**
 
-●	Depot dispatchers/fleet managers who assign and monitor delivery jobs.
-●	Delivery drivers who execute multi-stop routes, often in low-connectivity areas.
+●	Depot dispatchers/fleet managers who assign and monitor delivery jobs.\
+●	Delivery drivers who execute multi-stop routes, often in low-connectivity areas.\
 ●	Business clients (retailers and manufacturers) who outsource deliveries and need shipment visibility.
 
 ## 2. Proposed mobile solution
@@ -70,11 +70,11 @@ List at least five proposed endpoints:
 |---|---|---|
 |1|POST /api/auth/login|Authentcate a user (driver, dispatcher or client) via SSO and<br>return a JWT and refresh token.|
 |2|GET /api/drivers/{id}/jobs|Retrieve the delivery jobs and stop sequence currently<br>assigned to a driver.|
-|3|POST<br>/api/jobs/{jobId}/stops/{stopId}/pod|Submit proof of delivery (photo, signature, GPS coordinates,<br>tmestamp) for a completed stop, including ofine-queued<br>submissions.|
+|3|POST<br>/api/jobs/{jobId}/stops/{stopId}/pod|Submit proof of delivery (photo, signature, GPS coordinates,<br>tmestamp) for a completed stop, including offline-queued<br>submissions.|
 |4|POST /api/jobs|Create a new delivery job with multple stops and trigger<br>route-optmisaton logic.|
 |5|GET /api/depots/{id}/feet-status|Return live vehicle positons and job statuses for all drivers at<br>a depot, for the dispatcher map view.|
 |6|GET<br>/api/clients/{id}/shipments/{jobId}/tr<br>acking|Provide client-facing live tracking data and delivery<br>confrmaton for a shipment.|
-|7|POST /api/sync/batch|Accept a batch of ofine-queued driver actons and resolve<br>conficts against server state.|
+|7|POST /api/sync/batch|Accept a batch of offline-queued driver actons and resolve<br>conficts against server state.|
 
 
 ## 4. POE feature fit
@@ -82,11 +82,11 @@ List at least five proposed endpoints:
 |**Requirement**|**How it will ft the proposed app**|
 |---|---|
 |Single Sign-On|Drivers and dispatchers log in with a company Google or Microsof (Azure<br>AD) account via OAuth2/OpenID Connect, giving one identty across the<br>dispatcher web console and the Android driver app without separate<br>passwords per depot.|
-|Setngs — identfy at least three|(1) Language selecton (English / isiZulu); (2) notfcaton preferences, e.g.<br>SLA-breach alert thresholds; (3) ofine sync frequency / data-saver mode<br>for low-connectvity areas; (4) preferred map/navigaton provider (Google<br>Maps or Waze).|
+|Settings — identfy at least three|(1) Language selecton (English / isiZulu); (2) notfcaton preferences, e.g.<br>SLA-breach alert thresholds; (3) offline sync frequency / data-saver mode<br>for low-connectvity areas; (4) preferred map/navigaton provider (Google<br>Maps or Waze).|
 |Biometric authentcaton|Fingerprint or face unlock (Android BiometricPrompt) is required to open<br>the driver app each shif and to confrm submission of proof of delivery,<br>preventng a driver's device from being used by someone else and<br>reducing delivery fraud.|
-|Ofine acton and synchronisaton|The driver app uses a local Room database to queue stop completons,<br>POD photos/signatures and GPS breadcrumbs when there is no signal,<br>typical of rural depots or basement loading bays. Queued actons are<br>uploaded through the batch sync endpoint and reconciled by server-side<br>confict-resoluton logic once connectvity returns.|
-|Real-tme notfcaton|Firebase Cloud Messaging pushes: new job assignments to drivers, SLA-<br>breach and excepton alerts to dispatchers, and 'out for delivery'/<br>'delivered' updates to clients.|
-|Two South African languages|The interface is localised in English and isiZulu, covering navigaton menus,<br>job instructons and notfcaton text, selectable in Setngs or defaultng to<br>the device language.|
+|Offline acton and synchronisaton|The driver app uses a local Room database to queue stop completons,<br>POD photos/signatures and GPS breadcrumbs when there is no signal,<br>typical of rural depots or basement loading bays. Queued actons are<br>uploaded through the batch sync endpoint and reconciled by server-side<br>confict-resoluton logic once connectvity returns.|
+|Real-tme notificaton|Firebase Cloud Messaging pushes: new job assignments to drivers, SLA-<br>breach and excepton alerts to dispatchers, and 'out for delivery'/<br>'delivered' updates to clients.|
+|Two South African languages|The interface is localised in English and isiZulu, covering navigaton menus,<br>job instructons and notificaton text, selectable in Settings or defaultng to<br>the device language.|
 
 
 ## 5. Five user-defined features
@@ -98,7 +98,7 @@ List at least five proposed endpoints:
 |2|Excepton/incident reportng|Lets a driver log a failed or problem delivery (client absent, damaged<br>goods, access denied) with a photo and note, giving dispatchers<br>evidence to resolve client disputes quickly.|
 |3|In-app driver–dispatcher|Provides quick, logged text communicaton between driver and|||chat|dispatcher for real-tme issue resoluton, avoiding costly or missed<br>phone calls while driving.|
 |4|Client self-service tracking|Gives business clients a live map and ETA for their shipment plus<br>delivery confrmaton, cutng 'where is my order' calls to the depot.|
-|5|Depot performance<br>dashboard|Shows dispatchers KPIs such as on-tme delivery rate, per-driver<br>performance and total distance/fuel used, supportng data-driven<br>operatonal decisions.|
+|5|Depot performance<br>dashboard|Shows dispatchers KPIs such as on-time delivery rate, per-driver<br>performance and total distance/fuel used, supportng data-driven<br>operatonal decisions.|
 
 
 
